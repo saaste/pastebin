@@ -1,0 +1,213 @@
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('../fonts/roboto-mono.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ---- VARIABLES ---- */
+:root {
+    --font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --color-body-background: rgb(39, 41, 53);
+    --color-body-text: rgb(248, 248, 242);
+    --color-input-border: #aaa;
+    --color-link: rgb(255, 184, 108);
+    --color-copied: rgb(167, 255, 108);
+    --color-block: hsl(231, 15%, 15%);
+    --color-form-error: rgb(253, 176, 176);
+    --color-delete: rgb(255, 0, 0);
+
+    --link-text-shadow: 0 0 5px rgba(255, 184, 108, 0.7);
+    --form-error-text-shadow: 0 0 5px rgba(255, 108, 108, 0.7);
+    --copied-text-shadow: 0 0 5px rgba(167, 255, 108, 0.7);
+
+    --font-size-h1: clamp(1.4rem, 1.4rem + 1.5vw, 2.5rem);
+    --font-size-h2: clamp(1.2rem, 1.2rem + 1.5vw, 1.5rem);
+
+    --separator: 2px dotted rgb(76, 80, 103);
+}
+
+/* ---- GLOBAL ELEMENTS ---- */
+body {
+    background: var(--color-body-background);
+    color: var(--color-body-text);
+    font-family: var(--font-family);
+    line-height: 130%;
+}
+
+main {
+    padding: 1rem;
+}
+
+label {
+    padding-bottom: 0.5rem;
+}
+
+input,
+select {
+    border: 1px solid var(--color-input-border);
+    padding: 0.2rem;
+}
+
+button {
+    font-family: var(--font-family);
+    padding: 0.2rem 0.5rem;
+    width: fit-content;
+}
+
+a {
+    color: var(--color-link);
+
+    &:hover,
+    &:focus {
+        text-shadow: var(--link-text-shadow);
+    }
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+/* ---- NAMED ELEMENTS ----- */
+header {
+    display: grid;
+    grid-template-columns: auto min-content;
+    align-items: baseline;
+    padding: 1rem;
+    border-bottom: var(--separator);
+}
+
+nav {
+    & ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    & li {
+        white-space: nowrap;
+    }
+}
+
+.login-form {
+    max-width: 300px;
+}
+
+.document-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.document {
+    background-color: var(--color-block);
+    padding: 1rem;
+
+    &+.document {
+        margin-top: 2rem;
+    }
+
+    & h2 {
+        margin-bottom: 0.8rem;
+    }
+}
+
+.back {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.editor {
+    height: 70vh;
+}
+
+input[name="name"] {
+    max-width: 80ch;
+}
+
+select[name="syntax"] {
+    width: fit-content;
+}
+
+input[name="public_path"] {
+    max-width: 30ch;
+}
+
+button[value="delete"] {
+    color: var(--color-delete);
+}
+
+.copy-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: flex-start;
+}
+
+.copied {
+    opacity: 0;
+    color: var(--color-copied);
+    text-shadow: var(--copied-text-shadow);
+}
+
+.raw-content {
+    margin-top: 1rem;
+}
+
+
+
+/* ---- HELPERS ----- */
+.form-error {
+    color: var(--color-form-error);
+    text-shadow: var(--form-error-text-shadow);
+    margin: 1rem 0;
+    background-color: var(--color-block);
+    padding: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+
+    & + .input-group {
+        margin-top: 0.5rem;
+    }
+
+    &.checkbox {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+
+        & input {
+            order: 1;
+            margin: 0;
+        }
+
+        & label {
+            order: 2;
+            padding: 0;
+        }
+    }
+
+    &.button {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+.fadeout {
+    animation: fadeOut 3s;
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+ }
+
+.hidden {
+    display: none;
+}

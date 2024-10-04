@@ -1,0 +1,33 @@
+{{- define "base" -}}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{ .Title }}</title>
+        <link rel="stylesheet" href="/assets/css/reset.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>{{ .Title }}</h1>
+            {{- if .IsAuthenticated -}}
+            <nav>
+                <ul>
+                    <li><a href="/new">New paste</a></li>
+                    <li><a href="/logout">Log out</a></li>
+                </ul>
+            </nav>
+            {{- end -}}
+        </header>
+        <main>
+            {{- template "content" . -}}
+        </main>
+        <script src="/static/ace/ace.js"></script>
+        <script src="/static/js/editor.js" type="module"></script>
+        <script src="/assets/js/paste.js" type="module"></script>
+        <script src="/assets/js/app.js" type="module"></script>
+    </body>
+</html>
+{{- end -}}

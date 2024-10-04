@@ -1,0 +1,17 @@
+{{- define "content" -}}
+
+{{- with .Documents -}}
+<div class="document-list">
+    {{- range . -}}
+    <div class="document">
+        <h2><a href="/edit/{{ .Id }}">{{ .Name }}</a></h2>
+        {{- if .IsPublic -}}
+        <p>Public URL: <a href="{{ $.BaseURL}}/paste/{{ .PublicPath}}" target="_blank">{{ $.BaseURL }}/paste/{{ .PublicPath }}</a></p>
+        {{- end -}}
+        <p>Syntax: {{ .Syntax }}</p>
+        <p>Created: {{ .Created.Format "02.01.2006" }} | Updated {{ .Updated.Format "02.01.2006" }}</p>
+    </div>
+    {{- end -}}
+</div>
+{{- end -}}
+{{- end -}}

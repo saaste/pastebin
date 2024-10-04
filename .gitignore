@@ -1,0 +1,4 @@
+config.yaml
+docker-compose.yaml
+documents.yaml
+.DS_Store

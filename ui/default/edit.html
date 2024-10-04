@@ -1,0 +1,39 @@
+{{- define "content" -}}
+<a href="/" class="back">Takaisin</a>
+
+<form method="post" action="/edit/{{ .CurrentDocument.Id }}">
+    <div class="input-group">
+        <div id="editor" class="editor">{{ .CurrentDocument.Content }}</div>
+        <textarea name="content" id="content" class="hidden">{{ .CurrentDocument.Content }}</textarea>
+    </div>
+    {{- with .Error -}}
+    <div class="form-error">
+        {{.}}
+    </div>
+    {{- end -}}
+    <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="{{ .CurrentDocument.Name }}" autocomplete="off">
+    </div>
+    <div class="input-group">
+        <label for="syntax">Syntax</label>
+        <select name="syntax" id="syntax">
+            {{ range .SupportedSyntaxes}}
+            <option value="{{ . }}" {{ if eq . $.CurrentDocument.Syntax }}selected="selected"{{ end }}>{{ . }}</option>
+            {{ end }}
+        </select>
+    </div>
+    <div class="input-group checkbox">
+        <label for="is_public">Is public</label>
+        <input type="checkbox" name="is_public" id="is_public" {{ if .CurrentDocument.IsPublic }}checked{{ end }}>
+    </div>
+    <div class="input-group">
+        <label for="public_path">URL Path</label>
+        <input type="text" name="public_path" id="public_path" value="{{ .CurrentDocument.PublicPath }}" autocomplete="off">
+    </div>
+    <div class="input-group button">
+        <button type="submit" name="action" value="save">Save</button>
+        <button type="submit" name="action" value="delete" id="delete">Delete</button>
+    </div>
+</form>
+{{- end -}}

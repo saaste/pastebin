@@ -1,0 +1,11 @@
+services:
+  app:
+    container_name: pastebin
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./documents.yaml:/app/documents.yaml
+      - ./config.yaml:/app/config.yaml
+    ports:
+      - "8000:8000"

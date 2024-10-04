@@ -1,0 +1,16 @@
+{{- define "content" -}}
+<form method="post" action="/login" class="login-form">
+    {{- with .Error -}}
+    <div class="form-error">
+        {{.}}
+    </div>
+    {{- end -}}
+    <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+    </div>
+    <div class="input-group">
+        <button type="submit">Login</button>
+    </div>
+</form>
+{{- end -}}
