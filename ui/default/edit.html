@@ -1,5 +1,11 @@
 {{- define "content" -}}
-<a href="/" class="back">Takaisin</a>
+<div class="editor-actions">
+    <a href="/" class="back">Takaisin</a>
+    <div class="input-group checkbox">
+        <label for="wrap">Wrap</label>
+        <input type="checkbox" id="wrap" />
+    </div>
+</div>
 
 <form method="post" action="/edit/{{ .CurrentDocument.Id }}">
     <div class="input-group">

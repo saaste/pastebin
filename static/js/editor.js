@@ -1,28 +1,15 @@
-let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathContainer, deleteButton, copyElement, copiedElement, fadeTimer;
-
-// window.onload = () => {
-//     initializePaste();
-//     initializeEditor();
-// }
-
-// const initializePaste = () => {
-//     copyElement = document.getElementById("copy");
-//     copiedElement = document.getElementById("copied");
-//     if (copyElement && copiedElement) {
-//         copyElement.addEventListener("click", copyClicked);
-//     }
-// }
+let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathContainer, deleteButton, wrapCheckBoxElement;
 
 export const initializeEditor = () => {
     const editorElement = document.getElementById("editor");
     contentElement = document.getElementById("content");
     syntaxSelectElement = document.getElementById("syntax");
     isPublicCheckboxElement = document.getElementById("is_public");
-    publicPathContainer = document.querySelector("div:has(#public_path)")
-    deleteButton = document.getElementById("delete")
+    publicPathContainer = document.querySelector("div:has(#public_path)");
+    deleteButton = document.getElementById("delete");
+    wrapCheckBoxElement = document.getElementById("wrap");
 
-    if (!editorElement || !contentElement || !syntaxSelectElement | !isPublicCheckboxElement | !publicPathContainer) {
-        console.log("Editor not defined. Skipping...")
+    if (!editorElement || !contentElement || !syntaxSelectElement | !isPublicCheckboxElement | !publicPathContainer | !wrapCheckBoxElement) {
         return;
     }
 
@@ -35,6 +22,8 @@ export const initializeEditor = () => {
         fontFamily: "Roboto Mono",
         fontSize: "1rem",
         useWorker: false,
+        wrap: wrapCheckBoxElement.checked,
+
     });
     aceEditor.setTheme("ace/theme/monokai");
     aceEditor.session.setMode("ace/mode/" + selectedSyntax);
@@ -44,6 +33,8 @@ export const initializeEditor = () => {
     if (!isPublicCheckboxElement.checked) {
         publicPathContainer.classList.add("hidden");
     }
+
+    wrapCheckBoxElement.addEventListener("change", wrapCheckBoxElementChanged)
 
     if (deleteButton) {
         deleteButton.addEventListener("click", deleteButtonClicked);
@@ -73,15 +64,6 @@ const deleteButtonClicked = (e) => {
     }
 }
 
-// const copyClicked = (e) => {
-//     let rawContent = document.getElementById("raw-content");
-//     navigator.clipboard.writeText(rawContent.innerText);
-//     if (!fadeTimer) {
-//         copiedElement.classList.remove("fadeout");
-//         copiedElement.classList.add("fadeout");
-//         fadeTimer = setTimeout(() => {
-//             copiedElement.classList.remove("fadeout");
-//             fadeTimer = null;
-//         }, 3000)
-//     }
-// }
+const wrapCheckBoxElementChanged = (e) => {
+    aceEditor.setOption("wrap", e.target.checked)
+}

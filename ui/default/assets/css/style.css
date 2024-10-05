@@ -115,6 +115,16 @@ nav {
     }
 }
 
+.editor-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: baseline;
+
+    & *:last-child {
+        justify-self: end;
+    }
+}
+
 .back {
     display: block;
     margin-bottom: 1rem;
