@@ -5,7 +5,7 @@ export const initializeEditor = () => {
     contentElement = document.getElementById("content");
     syntaxSelectElement = document.getElementById("syntax");
     isPublicCheckboxElement = document.getElementById("is_public");
-    publicPathContainer = document.querySelector("div:has(#public_path)");
+    publicPathContainer = document.querySelector("div.public-path-container");
     deleteButton = document.getElementById("delete");
     wrapCheckBoxElement = document.getElementById("wrap");
 
@@ -32,6 +32,7 @@ export const initializeEditor = () => {
     isPublicCheckboxElement.addEventListener("change", isPublicChanged)
     if (!isPublicCheckboxElement.checked) {
         publicPathContainer.classList.add("hidden");
+        aceEditor.resize();
     }
 
     wrapCheckBoxElement.addEventListener("change", wrapCheckBoxElementChanged)
@@ -55,6 +56,7 @@ const isPublicChanged = (e) => {
     } else {
         publicPathContainer.classList.add("hidden");
     }
+    aceEditor.resize();
 }
 
 const deleteButtonClicked = (e) => {

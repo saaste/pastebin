@@ -33,6 +33,9 @@ body {
     color: var(--color-body-text);
     font-family: var(--font-family);
     line-height: 130%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr;
 }
 
 main {
@@ -115,6 +118,18 @@ nav {
     }
 }
 
+.editor-form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+}
+
+.document-details {
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-top: var(--separator);
+}
+
 .editor-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -131,7 +146,7 @@ nav {
 }
 
 .editor {
-    height: 70vh;
+    height: 100%;
 }
 
 input[name="name"] {
