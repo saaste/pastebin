@@ -13,6 +13,11 @@ export const initializeEditor = () => {
         return;
     }
 
+    console.log(localStorage.getItem("wrap"))
+
+    let wrapEnabled = localStorage.getItem("wrap") == "true" ? true : false;
+    wrapCheckBoxElement.checked = wrapEnabled;
+
     let selectedSyntax = syntaxSelectElement.value;
     syntaxSelectElement.addEventListener("change", syntaxChanged);
 
@@ -22,7 +27,7 @@ export const initializeEditor = () => {
         fontFamily: "Roboto Mono",
         fontSize: "1rem",
         useWorker: false,
-        wrap: wrapCheckBoxElement.checked,
+        wrap: wrapEnabled,
 
     });
     aceEditor.setTheme("ace/theme/monokai");
@@ -68,4 +73,5 @@ const deleteButtonClicked = (e) => {
 
 const wrapCheckBoxElementChanged = (e) => {
     aceEditor.setOption("wrap", e.target.checked)
+    localStorage.setItem("wrap", e.target.checked)
 }
