@@ -35,7 +35,7 @@ body {
     line-height: 130%;
     height: 100vh;
     display: grid;
-    grid-template-rows: min-content 1fr;
+    justify-items: center;
 }
 
 main {
@@ -76,6 +76,13 @@ h2 {
 }
 
 /* ---- NAMED ELEMENTS ----- */
+.page-container {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    width: min(100%, 1200px);
+    height: 100%;
+}
+
 header {
     display: grid;
     grid-template-columns: auto min-content;

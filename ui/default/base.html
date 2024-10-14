@@ -10,20 +10,22 @@
         <link rel="stylesheet" href="/assets/css/style.css">
     </head>
     <body>
-        <header>
-            <h1>{{ .Title }}</h1>
-            {{- if .IsAuthenticated -}}
-            <nav>
-                <ul>
-                    <li><a href="/new">New paste</a></li>
-                    <li><a href="/logout">Log out</a></li>
-                </ul>
-            </nav>
-            {{- end -}}
-        </header>
-        <main>
-            {{- template "content" . -}}
-        </main>
+        <div class="page-container">
+            <header>
+                <h1>{{ .Title }}</h1>
+                {{- if .IsAuthenticated -}}
+                <nav>
+                    <ul>
+                        <li><a href="/new">New paste</a></li>
+                        <li><a href="/logout">Log out</a></li>
+                    </ul>
+                </nav>
+                {{- end -}}
+            </header>
+            <main>
+                {{- template "content" . -}}
+            </main>
+        </div>
         <script src="/static/ace/ace.js"></script>
         <script src="/static/js/editor.js" type="module"></script>
         <script src="/assets/js/paste.js" type="module"></script>
