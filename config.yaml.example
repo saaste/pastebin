@@ -1,6 +1,6 @@
 baseUrl: http://localhost:8000
 title: "Pastebin"
 theme: "default"
-password: "password"
-jwtSecret: "changeme!"
+password: "CHANGEME!!!!"
+jwtSecret: "CHANGEME!!!!"
 defaultSyntax: "text"

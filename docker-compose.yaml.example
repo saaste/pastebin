@@ -1,9 +1,8 @@
 services:
   app:
+    image: ghcr.io/saaste/pastebin:latest
     container_name: pastebin
-    build:
-      dockerfile: Dockerfile
-      context: .
+    restart: unless-stopped
     volumes:
       - ./documents.yaml:/app/documents.yaml
       - ./config.yaml:/app/config.yaml
