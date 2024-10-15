@@ -1,14 +1,16 @@
 {{- define "content" -}}
 
-<div class="copy-container">
-    <button type="button" id="copy">Copy to Clipboard</button>
-    <span id="copied" class="copied">Copied!</span>
-</div>
+<div class="raw-container">
+    <div class="copy-container">
+        <button type="button" id="copy">Copy to Clipboard</button>
+        <span id="copied" class="copied">Copied!</span>
+    </div>
 
-{{- with .CurrentDocument -}}
-<pre id="raw-content" class="raw-content">
-    {{- .Content -}}
-</pre>
-{{- end -}}
+    {{- with .CurrentDocument -}}
+    <div id="raw-content" class="raw-content" data-syntax="{{- .Syntax -}}">
+        {{- .Content -}}
+    </div>
+    {{- end -}}
+</div>
 
 {{- end -}}
