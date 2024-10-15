@@ -53,5 +53,14 @@ By default, the application will run on port `8000`. You can change the port for
 ```
 
 ## Screenshots
-[![Pastebin preview](docs/screenshot1-tn.png "List view")](docs/screenshot1.png)
-[![Pastebin preview](docs/screenshot2-tn.png "Edit view")](docs/screenshot2.png)
+UI on bigger screens
+
+[![Pastebin preview](docs/admin-list-tn.jpg "Admin list view")](docs/admin-list.jpg)
+[![Pastebin preview](docs/admin-editor-tn.jpg "Admin editor")](docs/admin-editor.jpg)
+[![Pastebin preview](docs/public-view-tn.jpg "Public view")](docs/public-view.jpg)
+
+UI on mobile devices
+
+[![Pastebin preview](docs/mobile-admin-list-tn.jpg "Admin list view")](docs/mobile-admin-list.jpg)
+[![Pastebin preview](docs/mobile-admin-editor-tn.jpg "Admin editor")](docs/mobile-admin-editor.jpg)
+[![Pastebin preview](docs/mobile-public-view-tn.jpg "Public view")](docs/mobile-public-view.jpg)
