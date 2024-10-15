@@ -13,8 +13,6 @@ export const initializeEditor = () => {
         return;
     }
 
-    console.log(localStorage.getItem("wrap"))
-
     let wrapEnabled = localStorage.getItem("wrap") == "true" ? true : false;
     wrapCheckBoxElement.checked = wrapEnabled;
 
@@ -28,7 +26,6 @@ export const initializeEditor = () => {
         fontSize: "1rem",
         useWorker: false,
         wrap: wrapEnabled,
-
     });
     aceEditor.setTheme("ace/theme/monokai");
     aceEditor.session.setMode("ace/mode/" + selectedSyntax);
