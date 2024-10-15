@@ -10,7 +10,12 @@
     --font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-body-background: rgb(39, 41, 53);
     --color-body-text: rgb(248, 248, 242);
-    --color-input-border: #aaa;
+    --color-input-background: rgb(79, 71, 61);
+    --color-input-border: rgb(144, 129, 111);
+    --color-button-save-background: rgb(98, 110, 42);
+    --color-button-save-border: hsl(71, 45%, 50%);
+    --color-button-delete-background: rgb(110, 42, 42);
+    --color-button-delete-border: hsl(0, 45%, 50%);
     --color-link: rgb(255, 184, 108);
     --color-copied: rgb(167, 255, 108);
     --color-block: hsl(231, 15%, 15%);
@@ -48,14 +53,33 @@ label {
 
 input,
 select {
+    background-color: var(--color-input-background);
+    color: var(--color-body-text);
     border: 1px solid var(--color-input-border);
-    padding: 0.2rem;
+    padding: 0.3rem;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 button {
+    color: var(--color-body-text);
+    background-color: var(--color-input-background);
+    border: 1px solid var(--color-input-border);
     font-family: var(--font-family);
-    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
     width: fit-content;
+
+    &[value="save"] {
+        
+        background-color: var(--color-button-save-background);
+        border: 1px solid var(--color-button-save-border);
+    }
+
+    &[value="delete"] {
+        background-color: var(--color-button-delete-background);
+        border: 1px solid var(--color-button-delete-border);
+    }
 }
 
 a {
@@ -172,10 +196,6 @@ select[name="syntax"] {
 
 input[name="public_path"] {
     max-width: 30ch;
-}
-
-button[value="delete"] {
-    color: var(--color-delete);
 }
 
 .raw-container {
