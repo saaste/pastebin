@@ -30,6 +30,7 @@ func (h *Handler) PasteHandler(w http.ResponseWriter, r *http.Request) {
 
 	data := &PublicData{
 		Title:           h.appConfig.Title,
+		Version:         h.appConfig.AppVersion,
 		IsAuthenticated: ctx.Value(auth.AuthContextKeyIsAuthenticated) == true,
 		BaseURL:         h.appConfig.BaseURL,
 		CurrentDocument: doc,

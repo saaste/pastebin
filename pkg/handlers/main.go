@@ -25,6 +25,7 @@ type PublicData struct {
 	SupportedSyntaxes []string
 	DefaultSyntax     string
 	BaseURL           string
+	Version           string
 }
 
 func NewHandler(appConfig *config.AppConfig) *Handler {

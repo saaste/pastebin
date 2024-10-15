@@ -26,7 +26,7 @@
                 {{- template "content" . -}}
             </main>
             <footer>
-                Powered by <a href="https://github.com/saaste/pastebin/" target="_blank">Pastebin</a>
+                Powered by <a href="https://github.com/saaste/pastebin/" target="_blank">Pastebin</a>{{ if .IsAuthenticated }} {{ .Version }}{{ end}}
             </footer>
         </div>
         <script src="/static/ace/ace.js"></script>

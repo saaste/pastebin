@@ -13,7 +13,8 @@ import (
 func (h *Handler) NewHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	data := &PublicData{
-		Title: h.appConfig.Title,
+		Title:   h.appConfig.Title,
+		Version: h.appConfig.AppVersion,
 		CurrentDocument: &documents.Document{
 			Syntax: h.appConfig.DefaultSyntax,
 		},

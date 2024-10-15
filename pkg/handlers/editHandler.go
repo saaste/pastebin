@@ -22,6 +22,7 @@ func (h *Handler) EditHandler(w http.ResponseWriter, r *http.Request) {
 
 	data := &PublicData{
 		Title:             h.appConfig.Title,
+		Version:           h.appConfig.AppVersion,
 		CurrentDocument:   doc,
 		SupportedSyntaxes: syntax.SupportedSyntaxes,
 		DefaultSyntax:     h.appConfig.DefaultSyntax,
