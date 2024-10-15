@@ -78,7 +78,7 @@ h2 {
 /* ---- NAMED ELEMENTS ----- */
 .page-container {
     display: grid;
-    grid-template-rows: min-content 1fr;
+    grid-template-rows: min-content 1fr min-content;
     width: min(100%, 1200px);
     height: 100%;
 }
@@ -89,6 +89,12 @@ header {
     align-items: baseline;
     padding: 1rem;
     border-bottom: var(--separator);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    border-top: var(--separator);
 }
 
 nav {
