@@ -21,7 +21,7 @@ func (h *Handler) EditHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := &PublicData{
-		Title:             h.appConfig.Title,
+		Title:             fmt.Sprintf("%s | %s", doc.Name, h.appConfig.Title),
 		Version:           h.appConfig.AppVersion,
 		CurrentDocument:   doc,
 		SupportedSyntaxes: syntax.SupportedSyntaxes,

@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"errors"
+	"fmt"
 	"html"
 	"net/http"
 
@@ -29,7 +30,7 @@ func (h *Handler) PasteHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := &PublicData{
-		Title:           h.appConfig.Title,
+		Title:           fmt.Sprintf("%s | %s", doc.Name, h.appConfig.Title),
 		Version:         h.appConfig.AppVersion,
 		IsAuthenticated: ctx.Value(auth.AuthContextKeyIsAuthenticated) == true,
 		BaseURL:         h.appConfig.BaseURL,
