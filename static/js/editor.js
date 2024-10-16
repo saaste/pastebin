@@ -1,4 +1,4 @@
-let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathContainer, deleteButton, wrapCheckBoxElement, documentForm, nameInput;
+let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathContainer, deleteButton, wrapCheckBoxElement, documentForm, nameInput, pageTitleElement;
 
 export const initializeEditor = () => {
     const editorElement = document.getElementById("editor");
@@ -10,6 +10,7 @@ export const initializeEditor = () => {
     wrapCheckBoxElement = document.getElementById("wrap");
     documentForm = document.getElementById("document-form");
     nameInput = document.getElementById("name");
+    pageTitleElement = document.getElementsByTagName("h1")[0];
 
     if (!editorElement || !contentElement || !syntaxSelectElement | !isPublicCheckboxElement | !publicPathContainer | !wrapCheckBoxElement) {
         return;
@@ -45,9 +46,10 @@ export const initializeEditor = () => {
         deleteButton.addEventListener("click", deleteButtonClicked);
     }
 
-    if (documentForm && nameInput) {
+    if (documentForm && nameInput && pageTitleElement) {
         nameInput.addEventListener("change", nameInputChanged)
         nameInput.addEventListener("keyup", nameInputChanged)
+        nameInputChanged();
     }
 
 }
@@ -81,15 +83,16 @@ const wrapCheckBoxElementChanged = (e) => {
     localStorage.setItem("wrap", e.target.checked)
 }
 
-const nameInputChanged = (e) => {
+const nameInputChanged = () => {
     let title = document.title;
     let parts = title.split(" | ");
     let siteName = parts[parts.length - 1]
 
-    if (e.target.value.length > 0) {
-        document.title = `${e.target.value} | ${siteName}`
+    if (nameInput.value.length > 0) {
+        document.title = `${nameInput.value} | ${siteName}`
+        pageTitleElement.innerHTML = nameInput.value;
     } else {
         document.title = siteName;
+        pageTitleElement.innerHTML = "Unnamed";
     }
-    
 }

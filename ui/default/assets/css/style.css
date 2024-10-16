@@ -93,6 +93,7 @@ a {
 
 h1 {
     font-size: var(--font-size-h1);
+    line-height: 1.2em;
 }
 
 h2 {
@@ -110,7 +111,7 @@ h2 {
 header {
     display: grid;
     grid-template-columns: auto min-content;
-    align-items: baseline;
+    align-items: center;
     padding: 1rem;
     border-bottom: var(--separator);
 }
