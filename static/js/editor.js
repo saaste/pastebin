@@ -1,4 +1,4 @@
-let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathContainer, deleteButton, wrapCheckBoxElement;
+let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathContainer, deleteButton, wrapCheckBoxElement, documentForm, nameInput;
 
 export const initializeEditor = () => {
     const editorElement = document.getElementById("editor");
@@ -8,6 +8,8 @@ export const initializeEditor = () => {
     publicPathContainer = document.querySelector("div.public-path-container");
     deleteButton = document.getElementById("delete");
     wrapCheckBoxElement = document.getElementById("wrap");
+    documentForm = document.getElementById("document-form");
+    nameInput = document.getElementById("name");
 
     if (!editorElement || !contentElement || !syntaxSelectElement | !isPublicCheckboxElement | !publicPathContainer | !wrapCheckBoxElement) {
         return;
@@ -42,6 +44,12 @@ export const initializeEditor = () => {
     if (deleteButton) {
         deleteButton.addEventListener("click", deleteButtonClicked);
     }
+
+    if (documentForm && nameInput) {
+        nameInput.addEventListener("change", nameInputChanged)
+        nameInput.addEventListener("keyup", nameInputChanged)
+    }
+
 }
 
 const editorChanged = (delta) => {
@@ -71,4 +79,17 @@ const deleteButtonClicked = (e) => {
 const wrapCheckBoxElementChanged = (e) => {
     aceEditor.setOption("wrap", e.target.checked)
     localStorage.setItem("wrap", e.target.checked)
+}
+
+const nameInputChanged = (e) => {
+    let title = document.title;
+    let parts = title.split(" | ");
+    let siteName = parts[parts.length - 1]
+
+    if (e.target.value.length > 0) {
+        document.title = `${e.target.value} | ${siteName}`
+    } else {
+        document.title = siteName;
+    }
+    
 }

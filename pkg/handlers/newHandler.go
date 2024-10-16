@@ -36,6 +36,8 @@ func (h *Handler) NewHandler(w http.ResponseWriter, r *http.Request) {
 		data.CurrentDocument.PublicPath = r.Form.Get("public_path")
 		data.CurrentDocument.Content = r.Form.Get("content")
 
+		data.Title = fmt.Sprintf("%s | %s", data.CurrentDocument.Name, h.appConfig.Title)
+
 		err = h.documentStorage.Create(data.CurrentDocument)
 		if err != nil {
 			data.Error = err.Error()
