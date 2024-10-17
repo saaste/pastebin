@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/gosimple/slug"
 	"gopkg.in/yaml.v3"
 )
 
@@ -66,6 +67,7 @@ func (s *Storage) Create(doc *Document) error {
 	doc.Id = uuid.NewString()
 	doc.Created = now
 	doc.Updated = now
+	doc.PublicPath = slug.Make(doc.PublicPath)
 	docList.Documents = append(docList.Documents, *doc)
 
 	err = s.saveYamlFile(docList)

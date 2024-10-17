@@ -12,7 +12,12 @@
     <body>
         <div class="page-container">
             <header>
+                {{- with .CurrentDocument -}}
+                <h1>{{ .Name }}</h1>
+                {{- else -}}
                 <h1>{{ .Title }}</h1>
+                {{- end -}}
+                
                 {{- if .IsAuthenticated -}}
                 <nav>
                     <ul>

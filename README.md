@@ -8,6 +8,7 @@ This is mainly meant for small personal use where strong security is not needed.
 - [jwt-go](github.com/golang-jwt/jwt/) (JWT handling)
 - [uuid](github.com/google/uuid) (UUID generation)
 - [go-yaml](gopkg.in/yaml.v3) (YAML handling)
+- [slug](https://github.com/gosimple/slug) (Slug handling)
 - [Ace](https://ace.c9.io/) (HTML code editor)
 
 ## Supported languages/formats
@@ -37,8 +38,8 @@ The editor supports syntax highlighting for the following languages/formats
 | ------------- | ----------- |
 | baseUrl       | Base URL of the pastebin site e.g. https://mypastebin.com. |
 | title         | Title of the pastebin site. |
-| theme         | Active theme (not supported yet). |
-| password      | Password used to login. |
+| theme         | Active theme (not supported yet). |
+| password      | Password used to login. |
 | jwtSecret     | Secret used to sign the JWT. You can use [random.org](https://www.random.org/strings/?num=1&len=32&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new) to generate one. |
 | defaultSyntax | Default [syntax](#supported-languagesformats) used for editor highlighting |
 

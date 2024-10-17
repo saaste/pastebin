@@ -10,8 +10,10 @@
     --font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-body-background: rgb(39, 41, 53);
     --color-body-text: rgb(248, 248, 242);
-    --color-input-background: rgb(79, 71, 61);
-    --color-input-border: rgb(144, 129, 111);
+    --color-input-background: hsl(33, 13%, 27%);
+    --color-input-invalid-background: hsl(3, 36%, 26%);
+    --color-input-border: hsl(33, 13%, 50%);
+    --color-input-invalid-border: hsl(3, 36%, 49%);
     --color-button-save-background: rgb(98, 110, 42);
     --color-button-save-border: hsl(71, 45%, 50%);
     --color-button-delete-background: rgb(110, 42, 42);
@@ -59,6 +61,11 @@ select {
     padding: 0.3rem;
     border-radius: 5px;
     font-size: 1rem;
+
+    &:required:invalid {
+        background-color: var(--color-input-invalid-background);
+        border: 1px solid var(--color-input-invalid-border)
+    }
 }
 
 button {
@@ -93,6 +100,7 @@ a {
 
 h1 {
     font-size: var(--font-size-h1);
+    line-height: 1.2em;
 }
 
 h2 {
@@ -110,7 +118,7 @@ h2 {
 header {
     display: grid;
     grid-template-columns: auto min-content;
-    align-items: baseline;
+    align-items: center;
     padding: 1rem;
     border-bottom: var(--separator);
 }

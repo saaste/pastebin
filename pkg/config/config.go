@@ -7,7 +7,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-const appVersion string = "0.1.2"
+const appVersion string = "0.1.3"
 
 type AppConfig struct {
 	BaseURL       string `yaml:"baseUrl"`
