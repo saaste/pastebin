@@ -1,10 +1,11 @@
-let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathContainer, deleteButton, wrapCheckBoxElement, documentForm, nameInput, pageTitleElement;
+let aceEditor, contentElement, syntaxSelectElement, isPublicCheckboxElement, publicPathInput, publicPathContainer, deleteButton, wrapCheckBoxElement, documentForm, nameInput, pageTitleElement;
 
 export const initializeEditor = () => {
     const editorElement = document.getElementById("editor");
     contentElement = document.getElementById("content");
     syntaxSelectElement = document.getElementById("syntax");
     isPublicCheckboxElement = document.getElementById("is_public");
+    publicPathInput = document.getElementById("public_path");
     publicPathContainer = document.querySelector("div.public-path-container");
     deleteButton = document.getElementById("delete");
     wrapCheckBoxElement = document.getElementById("wrap");
@@ -12,7 +13,7 @@ export const initializeEditor = () => {
     nameInput = document.getElementById("name");
     pageTitleElement = document.getElementsByTagName("h1")[0];
 
-    if (!editorElement || !contentElement || !syntaxSelectElement | !isPublicCheckboxElement | !publicPathContainer | !wrapCheckBoxElement) {
+    if (!editorElement || !contentElement || !syntaxSelectElement | !isPublicCheckboxElement | !publicPathInput | !publicPathContainer | !wrapCheckBoxElement) {
         return;
     }
 
@@ -35,10 +36,7 @@ export const initializeEditor = () => {
     aceEditor.session.on("change", editorChanged);
 
     isPublicCheckboxElement.addEventListener("change", isPublicChanged)
-    if (!isPublicCheckboxElement.checked) {
-        publicPathContainer.classList.add("hidden");
-        aceEditor.resize();
-    }
+    isPublicChanged();
 
     wrapCheckBoxElement.addEventListener("change", wrapCheckBoxElementChanged)
 
@@ -62,11 +60,13 @@ const syntaxChanged = (e) => {
     aceEditor.session.setMode("ace/mode/" + e.target.value);
 }
 
-const isPublicChanged = (e) => {
-    if (e.target.checked) {
+const isPublicChanged = () => {
+    if (isPublicCheckboxElement.checked) {
         publicPathContainer.classList.remove("hidden");
+        publicPathInput.required = true;
     } else {
         publicPathContainer.classList.add("hidden");
+        publicPathInput.required = false;
     }
     aceEditor.resize();
 }

@@ -21,7 +21,7 @@
         {{- end -}}
         <div class="input-group">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="{{ .CurrentDocument.Name }}" autocomplete="off">
+            <input type="text" name="name" id="name" value="{{ .CurrentDocument.Name }}" autocomplete="off" placeholder="Required" required>
         </div>
         <div class="input-group">
             <label for="syntax">Syntax</label>
@@ -37,7 +37,7 @@
         </div>
         <div class="input-group public-path-container">
             <label for="public_path">URL Path</label>
-            <input type="text" name="public_path" id="public_path" value="{{ .CurrentDocument.PublicPath }}" autocomplete="off">
+            <input type="text" name="public_path" id="public_path" value="{{ .CurrentDocument.PublicPath }}" autocomplete="off" placeholder="Required">
         </div>
         <div class="input-group button">
             <button type="submit" name="action" value="save">Save</button>
